@@ -11,3 +11,10 @@
 *.lai
 *.la
 *.a
+
+# kernel intermedate files
+*.o.cmd
+*.ko
+modules.order
+Module.symvers
+.tmp_versions
