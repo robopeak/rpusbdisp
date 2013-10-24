@@ -26,17 +26,22 @@ Before building the driver, you may need to config the linux kernel to enable th
 If you want to use the driver with your current kernel (without recompiling the kernel and replacing it with the current one), please make sure the kernel header, the config and the related build scripts you used is belonged to this version of kernel.
 
 Please make sure the following kernel features have been enabled. (via make menuconfig under your kernel source)
+    
     0) framebuffer support (CONFIG_FB=y)
+    
     1) deferred io support in framebuffer (CONFIG_FB_DEFERRED_IO=y)
+    
     2) fb file operation support
-       CONFIG_FB_CFB_FILLRECT=y
-       CONFIG_FB_CFB_COPYAREA=y
-       CONFIG_FB_CFB_IMAGEBLIT=y
-       CONFIG_FB_SYS_FILLRECT=m
-       CONFIG_FB_SYS_COPYAREA=m
-       CONFIG_FB_SYS_IMAGEBLIT=m
-       CONFIG_FB_SYS_FOPS=m
-       CONFIG_FB_MODE_HELPERS=y
+       
+       * CONFIG_FB_CFB_FILLRECT=y
+       * CONFIG_FB_CFB_COPYAREA=y
+       * CONFIG_FB_CFB_IMAGEBLIT=y
+       * CONFIG_FB_SYS_FILLRECT=m
+       * CONFIG_FB_SYS_COPYAREA=m
+       * CONFIG_FB_SYS_IMAGEBLIT=m
+       * CONFIG_FB_SYS_FOPS=m
+       * CONFIG_FB_MODE_HELPERS=y
+    
     3) Input event support (Generic input layer support)
 
 You may modify the .config directly to enable these features.
@@ -88,14 +93,17 @@ II. deploy the compiled kernel driver
 -------------------------------------
 
 Reboot the target system to using the new kernel. Copy the compiled usb display driver (rp_usbdisplay.ko) to the following location:
+    
     /lib/modules/`uname -r`/kernel
 
 Enter the above folder and execute the following command:
+    
     depmod -a
 
 III. load the kernel driver
 ---------------------------
 Once you had deployed the kernel driver and all of its dependencies, you can ask the kernel to load the driver using :
+    
     modprobe rp_usbdisplay
 
 If you want to let the kernel load the driver automatically each time when the system starts, you can added the following line into the file /etc/modules:
@@ -117,8 +125,10 @@ Using the lsmod command to check whether the driver has been loaded correctlly. 
   syscopyarea             3112  1 rp_usbdisplay
 
 Also, you should find the following message in the dmesg log:
-[    7.535799] input: RoboPeakUSBDisplayTS as /devices/virtual/input/input0
-[    7.548115] usbcore: registered new interface driver rp-usbdisp
+
+  [    7.535799] input: RoboPeakUSBDisplayTS as /devices/virtual/input/input0
+
+  [    7.548115] usbcore: registered new interface driver rp-usbdisp
 
 To verify the driver work with the RoboPeak USB Display, connect the display to the target system via the USB cable. The display should display RoboPea Logo and turn to black (or something else) for about 3 second.
 
@@ -131,8 +141,7 @@ Once the driver recognizes the display, a framebuffer device will be created. (e
 Use the following command to see whether framebuffer device is belonged to the USB display:
 
   # cat /proc/fb
-  0
-  1
+  
   2 rpusbdisp-fb < 
 
 In the above example, /dev/fb2 is the related framebuffer device. To test whether the framebuffer device works, you may using the following command:
