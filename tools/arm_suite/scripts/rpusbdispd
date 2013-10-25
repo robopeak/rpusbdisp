@@ -1,0 +1,15 @@
+#! /bin/sh -e
+# upstart-job
+
+case "$1" in
+	start)
+		/etc/rpusbdisp/rpusbdispd.sh start &
+		;;
+	stop)
+		/etc/rpusbdisp/rpusbdispd.sh stop &
+		;;
+	restart)
+		start
+		stop
+		;;
+esac
