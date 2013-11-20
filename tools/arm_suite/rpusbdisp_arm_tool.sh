@@ -1,5 +1,15 @@
 #! /bin/bash
 
+echo "RoboPeak USB Display Arm Suite"
+echo "Version $(cat .version)"
+echo "Copyright (c) 2013 RoboPeak.com"
+echo
+
+if [ ! -e kernel_modules ]; then
+    echo "Decompressing kernel modules..."
+    tar xf kernel_modules.tar.bz2
+fi
+
 function install_kernel_module {
     echo "Installing kernel module..."
     echo "Please enter your board type (pcduino, cubieboard, cubieboard2...):"
