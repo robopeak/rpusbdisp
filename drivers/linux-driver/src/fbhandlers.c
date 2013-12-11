@@ -49,7 +49,7 @@ struct rpusbdisp_fb_private {
 
 
 
-static struct fb_fix_screeninfo _vfb_fix __devinitdata = {
+static struct fb_fix_screeninfo _vfb_fix /*__devinitdata*/ = {
 	.id =	    "rpusbdisp-fb",
 	.type =		FB_TYPE_PACKED_PIXELS,
 	.visual =	FB_VISUAL_TRUECOLOR,
@@ -59,7 +59,7 @@ static struct fb_fix_screeninfo _vfb_fix __devinitdata = {
 };
 
 
-static  struct fb_var_screeninfo _var_info __devinitdata = {
+static  struct fb_var_screeninfo _var_info /*__devinitdata*/ = {
     .xres = RP_DISP_DEFAULT_WIDTH,
     .yres = RP_DISP_DEFAULT_HEIGHT,
     .xres_virtual = RP_DISP_DEFAULT_WIDTH,
@@ -282,7 +282,7 @@ static void _display_defio_handler(struct fb_info *info,
     _display_update(info, 0, top, info->var.width, bottom - top + 1, DISPLAY_UPDATE_HINT_NONE, NULL);
 }
 
-static  struct fb_ops _display_fbops __devinitdata = {
+static  struct fb_ops _display_fbops /*__devinitdata*/ = {
     .owner = THIS_MODULE,
     .fb_read = fb_sys_read,
     .fb_write =     _display_write,
