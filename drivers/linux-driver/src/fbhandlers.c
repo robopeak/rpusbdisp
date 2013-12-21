@@ -123,6 +123,7 @@ static  void _display_update( struct fb_info *p, int x, int y, int width, int he
 
         clear_dirty = 1;
     } else {
+        
         if (pa->dirty_rect.top > y) pa->dirty_rect.top = y;
         if (pa->dirty_rect.bottom < height+y-1) pa->dirty_rect.bottom = height+y-1;
         if (pa->dirty_rect.left > x) pa->dirty_rect.left = x;
@@ -130,9 +131,9 @@ static  void _display_update( struct fb_info *p, int x, int y, int width, int he
 
     }
 
-    if (pa->dirty_rect.top > pa->dirty_rect.bottom || pa->dirty_rect.left > pa->dirty_rect.right)
+    if (pa->dirty_rect.top > pa->dirty_rect.bottom || pa->dirty_rect.left > pa->dirty_rect.right) {
         goto final;
-    
+    }
     atomic_set(&pa->dirty_rect.dirty_flag, 1);
 
     // 2. try to send it
@@ -167,14 +168,13 @@ static  void _display_update( struct fb_info *p, int x, int y, int width, int he
             }
             break;
             default:
-                
                 if (rpusbdisp_usb_try_send_image(pa->binded_usbdev, (const pixel_type_t *)p->fix.smem_start,
                      pa->dirty_rect.left, pa->dirty_rect.top, pa->dirty_rect.right, pa->dirty_rect.bottom, p->fix.line_length/(RP_DISP_DEFAULT_PIXEL_BITS/8),
                      clear_dirty)) {
                     // data sent, rect the dirty rect
                     _clear_dirty_rect(&pa->dirty_rect);
 
-                }
+                } 
         }
 
     }
@@ -193,12 +193,14 @@ static  void _display_fillrect ( struct fb_info * p, const  struct fb_fillrect *
 
 static  void _display_imageblit ( struct fb_info * p, const  struct fb_image * image)
 {
+
     sys_imageblit (p, image);
     _display_update(p, image->dx, image->dy, image->width, image->height, DISPLAY_UPDATE_HINT_BITBLT, image);
 }
 
 static  void _display_copyarea ( struct fb_info * p, const  struct fb_copyarea * area)
 {
+
     sys_copyarea (p, area);
     _display_update(p, area->dx, area->dy, area->width, area->height, DISPLAY_UPDATE_HINT_COPYAREA, area);
 }
@@ -208,6 +210,7 @@ static ssize_t _display_write ( struct fb_info * p, const  char * buf __user,
 {       
     int retval;
     retval = fb_sys_write (p, buf, count, ppos);
+
     _display_update(p, 0, 0, p->var.width, p->var.height, DISPLAY_UPDATE_HINT_NONE, NULL);
     return retval;
 }
@@ -278,6 +281,7 @@ static void _display_defio_handler(struct fb_info *info,
 
     }
     if (bottom >= RP_DISP_DEFAULT_HEIGHT) bottom = RP_DISP_DEFAULT_HEIGHT - 1;
+
 
     _display_update(info, 0, top, info->var.width, bottom - top + 1, DISPLAY_UPDATE_HINT_NONE, NULL);
 }
@@ -477,8 +481,8 @@ void fbhandler_on_all_transfer_done(struct rpusbdisp_dev * dev)
 
     fb_pri = _get_fb_private(fb);
     
-    if (atomic_read(&fb_pri->dirty_rect.dirty_flag) || atomic_read(&fb_pri->unsync_flag)) {
-        _display_update(fb, RP_DISP_DEFAULT_WIDTH, RP_DISP_DEFAULT_HEIGHT, 0, 0,  DISPLAY_UPDATE_HINT_NONE, NULL);
+    if (atomic_read(&fb_pri->dirty_rect.dirty_flag) || atomic_read(&fb_pri->unsync_flag)==1) {
+        _display_update(fb, 0, 0, RP_DISP_DEFAULT_WIDTH, RP_DISP_DEFAULT_HEIGHT,   DISPLAY_UPDATE_HINT_NONE, NULL);
     }
 
 }

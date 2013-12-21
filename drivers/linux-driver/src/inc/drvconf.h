@@ -17,7 +17,7 @@
 
 
 #define DRIVER_LICENSE_INFO    "GPL"
-#define DRIVER_VERSION         "RoboPeak USB Display Driver Version 0.01"
+#define DRIVER_VERSION         "RoboPeak USB Display Driver Version 1.00"
 
 #define RPUSBDISP_MINOR		   300
 

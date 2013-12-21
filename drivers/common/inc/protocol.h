@@ -21,6 +21,7 @@
 #define RPUSBDISP_DISPCMD_BITBLT           2
 #define RPUSBDISP_DISPCMD_RECT             3
 #define RPUSBDISP_DISPCMD_COPY_AREA        4
+#define RPUSBDISP_DISPCMD_BITBLT_RLE       5
 
 
 #define RPUSBDISP_OPERATION_COPY            0
@@ -51,9 +52,6 @@ typedef struct _rpusbdisp_disp_fill_packet_t {
     rpusbdisp_disp_packet_header_t header;
     _u16 color_565;
 } __attribute__((packed)) rpusbdisp_disp_fill_packet_t;
-
-
-
 
 
 typedef struct _rpusbdisp_disp_bitblt_packet_t {
@@ -92,6 +90,9 @@ typedef struct _rpusbdisp_disp_copyarea_packet_t {
 #endif
 
 
+// RLE Packet Define
+#define RPUSBDISP_RLE_BLOCKFLAG_COMMON_BIT        0x80
+#define RPUSBDISP_RLE_BLOCKFLAG_SIZE_BIT          0x7f
 
 // -- Status Packets
 
@@ -118,8 +119,8 @@ typedef struct _rpusbdisp_status_normal_packet_t {
     rpusbdisp_status_packet_header_t header;
     _u8 display_status;
     _u8 touch_status;
-    int touch_x;
-    int touch_y;
+    _s32 touch_x;
+    _s32 touch_y;
 } __attribute__((packed)) rpusbdisp_status_normal_packet_t;
 
 #if defined(_WIN32) || defined(__ICCARM__)

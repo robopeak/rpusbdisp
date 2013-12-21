@@ -25,4 +25,7 @@
 #define RP_DISP_DEFAULT_PIXEL_BITS  16
 typedef _u16  pixel_type_t; 
 
+
+#define RP_DISP_FEATURE_RLE_FWVERSION 0x0104
+
 #endif
