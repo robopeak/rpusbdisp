@@ -104,6 +104,8 @@ struct rpusbdisp_dev {
 
     void                            *  fb_handle;
     void                            *  touch_handle;
+
+    __u16                              device_fwver;
 };
 
 #if 0
@@ -777,7 +779,7 @@ int rpusbdisp_usb_try_send_image(struct rpusbdisp_dev * dev, const pixel_type_t 
     // do not transmit zero size image
     if (!image_size) return 1;
 
-    if (dev->udev->descriptor.bcdDevice >= RP_DISP_FEATURE_RLE_FWVERSION) {
+    if (dev->device_fwver >= RP_DISP_FEATURE_RLE_FWVERSION) {
         rlemode = 1;
     } else {
         rlemode = 0;
@@ -958,12 +960,12 @@ static int _on_new_usb_device(struct rpusbdisp_dev * dev)
     _add_usbdev_to_list(dev);
     dev->dev_id = rpusbdisp_usb_get_device_count();
     dev->is_alive = 1;
-    
+    dev->device_fwver = le16_to_cpu(dev->udev->descriptor.bcdDevice);
 
     dev_info(&dev->interface->dev, "RP USB Display found (#%d), Firmware Version: %d.%02d, S/N: %s\n", 
                                 dev->dev_id, 
-                                (dev->udev->descriptor.bcdDevice>>8),
-                                (dev->udev->descriptor.bcdDevice & 0xFF),
+                                (dev->device_fwver>>8),
+                                (dev->device_fwver & 0xFF),
                                 dev->udev->serial?dev->udev->serial:"(unknown)");
 
 
@@ -1044,7 +1046,7 @@ static int rpusbdisp_probe(struct usb_interface *interface, const struct usb_dev
 	dev->udev = usb_get_dev(interface_to_usbdev(interface));
 	dev->interface = interface;
 
-	if (dev->udev->descriptor.bcdDevice > 0x0200) {
+	if (le16_to_cpu(dev->udev->descriptor.bcdDevice) > 0x0200) {
 		dev_warn(&interface->dev, "The device you used may requires a newer driver version to work.\n");
 	}
 	
