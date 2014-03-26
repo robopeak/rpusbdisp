@@ -12,6 +12,23 @@ http://www.youtube.com/watch?v=KCNrq1hb99U
 [国内用户:] http://www.tudou.com/programs/view/rJd1TwZzRZk/
 
 
+How to Integrate the Linux Kernel Driver in the Kernel build operation
+======================================================================
+    1) Copy the content of linux-driver folder in your kernel source (ideally in a new folder called robopeak inside the drivers/video folder)
+    2) Replace the Makefile file by the NewMakefile one
+    3) Edit the Kconfig file of the drivers/video file and insert the line
+       * source "drivers/video/robopeak/Kconfig"
+       after the line
+       * comment "Frame buffer hardware drivers"
+    4) Change the .config of your kernel through the menuconfig
+       * make ARCH=your_architecture your_defconfig menuconfig
+    5) In the menu "Device Drivers -> Graphic supports -> Support for frame buffer display" a Robopeak USB Display menu appears
+    6) Set the Robopeak USB Display as module (this selection activates automatically the requested frame buffer option, see Prerequites of How to build the Linux Kernel Driver chapter)
+    7) Generate your kernel
+
+
+ 
+
 How to Build the Linux Kernel Driver
 ====================================
 Here we only provide you the basic building process. Please refer to the related documents for details.
@@ -105,6 +122,10 @@ III. load the kernel driver
 Once you had deployed the kernel driver and all of its dependencies, you can ask the kernel to load the driver using :
     
     modprobe rp_usbdisplay
+
+By default the frame per seconds is set to 16. You can change it with the fps option when you load the driver :
+    modprobe rp_usbdisplay fps=25
+In this case the frame per seconds is set to 25.
 
 If you want to let the kernel load the driver automatically each time when the system starts, you can added the following line into the file /etc/modules:
     rp_usbdisplay

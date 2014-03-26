@@ -405,7 +405,8 @@ static int _on_create_new_fb(struct fb_info ** out_fb, struct rpusbdisp_dev *dev
 	fbdefio = /*kmalloc*/kzalloc(sizeof(struct fb_deferred_io), GFP_KERNEL);
 
 	if (fbdefio) {
-		fbdefio->delay = HZ/16;
+                // frame rate is configurable through the fps option during the load operation
+		fbdefio->delay = HZ/fps;
 		fbdefio->deferred_io = _display_defio_handler;
 	} else {
         err("Cannot alloc the fb_deferred_io.\n");

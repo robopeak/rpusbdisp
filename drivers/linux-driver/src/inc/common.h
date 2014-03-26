@@ -41,6 +41,7 @@
 
 #include "inc/protocol.h"
 
+extern int fps;
 
 // object predefine
 
