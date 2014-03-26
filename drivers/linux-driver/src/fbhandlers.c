@@ -374,7 +374,7 @@ static int _on_create_new_fb(struct fb_info ** out_fb, struct rpusbdisp_dev *dev
     fb->fbops       = &_display_fbops;
     fb->flags       = FBINFO_DEFAULT | FBINFO_VIRTFB;
     
-    fbmem_size = _var_info.xres * _vfb_fix.line_length;
+    fbmem_size = _var_info.yres * _vfb_fix.line_length; // Correct issue with size allocation (too big)
     fbmem =  rvmalloc(fbmem_size);
     if (!fbmem) {
 
@@ -400,10 +400,13 @@ static int _on_create_new_fb(struct fb_info ** out_fb, struct rpusbdisp_dev *dev
     }
 
 
-	fbdefio = kmalloc(sizeof(struct fb_deferred_io), GFP_KERNEL);
+	// Since kernel 3.5 the fb_deferred_io structure has a second callback (first_io) that must be set to a valid function or NULL.
+	// To avoid unexpected crash due to a non initialized function pointer do a kzalloc rather than a kmalloc
+	fbdefio = /*kmalloc*/kzalloc(sizeof(struct fb_deferred_io), GFP_KERNEL);
 
 	if (fbdefio) {
-		fbdefio->delay = HZ/16;
+                // frame rate is configurable through the fps option during the load operation
+		fbdefio->delay = HZ/fps;
 		fbdefio->deferred_io = _display_defio_handler;
 	} else {
         err("Cannot alloc the fb_deferred_io.\n");
