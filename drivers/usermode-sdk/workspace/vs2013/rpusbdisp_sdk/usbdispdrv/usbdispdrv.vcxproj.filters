@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\rp">
+      <UniqueIdentifier>{1cf6d356-a92f-4f03-b1da-8e0b5bdf2105}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\rp\deps">
+      <UniqueIdentifier>{9d2c0b7a-39fc-4f70-9e90-10e0c3d48131}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\rp\deps\libusbx_wrap">
+      <UniqueIdentifier>{4b1f1bcc-fcaa-4c37-9e21-f6e3ebda6427}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\deps-wraps">
+      <UniqueIdentifier>{202ba796-af79-4c2d-ad2f-53dd5e1b86b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\deps-wraps\libusbx_wrap">
+      <UniqueIdentifier>{0434bd4f-d2b5-4774-8ea5-27fcd0ef865a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\rp\drivers">
+      <UniqueIdentifier>{464e5625-fc76-45b5-88b3-02c3769c3224}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\rp\drivers\display">
+      <UniqueIdentifier>{bde6d96e-9d01-48c8-bd1d-b8140b4e5c96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\rp\drivers\display\rpusbdisp">
+      <UniqueIdentifier>{caa9936f-78eb-445f-b6bd-73e04b505080}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\rpusbdispdrv">
+      <UniqueIdentifier>{142c7154-dd47-4781-ad68-58fb731a083d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\deps-wraps\libusbx_wrap\include\rp\deps\libusbx_wrap\context.h">
+      <Filter>Header Files\rp\deps\libusbx_wrap</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\deps-wraps\libusbx_wrap\include\rp\deps\libusbx_wrap\device.h">
+      <Filter>Header Files\rp\deps\libusbx_wrap</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\deps-wraps\libusbx_wrap\include\rp\deps\libusbx_wrap\device_handle.h">
+      <Filter>Header Files\rp\deps\libusbx_wrap</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\deps-wraps\libusbx_wrap\include\rp\deps\libusbx_wrap\device_list.h">
+      <Filter>Header Files\rp\deps\libusbx_wrap</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\deps-wraps\libusbx_wrap\include\rp\deps\libusbx_wrap\enums.h">
+      <Filter>Header Files\rp\deps\libusbx_wrap</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\deps-wraps\libusbx_wrap\include\rp\deps\libusbx_wrap\libusbx_wrap.h">
+      <Filter>Header Files\rp\deps\libusbx_wrap</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\deps-wraps\libusbx_wrap\include\rp\deps\libusbx_wrap\scopes.h">
+      <Filter>Header Files\rp\deps\libusbx_wrap</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\deps-wraps\libusbx_wrap\include\rp\deps\libusbx_wrap\transfer.h">
+      <Filter>Header Files\rp\deps\libusbx_wrap</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\rpusbdisp-drv\include\rp\drivers\display\rpusbdisp\c_interface.h">
+      <Filter>Header Files\rp\drivers\display\rpusbdisp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\rpusbdisp-drv\include\rp\drivers\display\rpusbdisp\enums.h">
+      <Filter>Header Files\rp\drivers\display\rpusbdisp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\rpusbdisp-drv\include\rp\drivers\display\rpusbdisp\protocol.h">
+      <Filter>Header Files\rp\drivers\display\rpusbdisp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\rpusbdisp-drv\include\rp\drivers\display\rpusbdisp\rle.h">
+      <Filter>Header Files\rp\drivers\display\rpusbdisp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\rpusbdisp-drv\include\rp\drivers\display\rpusbdisp\rpusbdisp.h">
+      <Filter>Header Files\rp\drivers\display\rpusbdisp</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\..\deps-wraps\libusbx_wrap\src\context.cc">
+      <Filter>Source Files\deps-wraps\libusbx_wrap</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\deps-wraps\libusbx_wrap\src\device.cc">
+      <Filter>Source Files\deps-wraps\libusbx_wrap</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\deps-wraps\libusbx_wrap\src\device_handle.cc">
+      <Filter>Source Files\deps-wraps\libusbx_wrap</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\deps-wraps\libusbx_wrap\src\device_list.cc">
+      <Filter>Source Files\deps-wraps\libusbx_wrap</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\deps-wraps\libusbx_wrap\src\scopes.cc">
+      <Filter>Source Files\deps-wraps\libusbx_wrap</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\deps-wraps\libusbx_wrap\src\transfer.cc">
+      <Filter>Source Files\deps-wraps\libusbx_wrap</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\deps-wraps\libusbx_wrap\src\transfer_buffer.cc">
+      <Filter>Source Files\deps-wraps\libusbx_wrap</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\rpusbdisp-drv\src\c_interface.cc">
+      <Filter>Source Files\rpusbdispdrv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\rpusbdisp-drv\src\rle.cc">
+      <Filter>Source Files\rpusbdispdrv</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\rpusbdisp-drv\src\rpusbdisp.cc">
+      <Filter>Source Files\rpusbdispdrv</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\rp">
+      <UniqueIdentifier>{1ee583f9-6d7f-434c-a2f6-3e51538b02a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\rp\util">
+      <UniqueIdentifier>{4eee795b-23ac-4e24-8238-e3f35679fca3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\util">
+      <UniqueIdentifier>{d7af3a6d-eff3-443e-b683-65e2a7ae5e78}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\..\infra\include\rp\util\buffer.h">
+      <Filter>Header Files\rp\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\infra\include\rp\util\endian.h">
+      <Filter>Header Files\rp\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\infra\include\rp\util\exception.h">
+      <Filter>Header Files\rp\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\infra\include\rp\util\int_types.h">
+      <Filter>Header Files\rp\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\infra\include\rp\util\noncopyable.h">
+      <Filter>Header Files\rp\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\infra\include\rp\util\scopes.h">
+      <Filter>Header Files\rp\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\infra\include\rp\infra_config.h">
+      <Filter>Header Files\rp</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\..\infra\src\util\buffer.cc">
+      <Filter>Source Files\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\infra\src\util\exception.cc">
+      <Filter>Source Files\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\infra\src\util\scopes.cc">
+      <Filter>Source Files\util</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
