@@ -28,6 +28,12 @@ Please ensure you have Visual Studio 2013 (or Express) installed. Just open
 the project file located at workspaces/vs2013, and build like any other visual
 studio projects.
 
+After build please copy the libusb-1.0.dll from workspace/vs2013/Win32/[Debug|Release]/dll to workspace/vs2013/rpusbdisp_sdk/[Debug|Release]
+
+On Windows, you need to install a libusb driver for RoboPeak Mini USB Display device.
+
+The simplest way is use zadig's install which is located [here](http://zadig.zkeo.ie), you can use either libusb-win32 driver or libusbk driver, Microsoft WinUSB driver will not work.
+
 ## OS X (Mac OS X)
 Just open the xcode project in workspaces/xcode with latest Xcode and build.
 
