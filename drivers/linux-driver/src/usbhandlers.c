@@ -241,13 +241,9 @@ static void _on_display_transfer_finished(struct urb *urb)
 
 static void _on_status_query_finished(struct urb *urb)
 {
-
-    
 	struct rpusbdisp_dev *dev = urb->context;
-    mutex_lock(&dev->op_locker);
 
     if (!dev->is_alive) {
-        mutex_unlock(&dev->op_locker);
         return;
     }
 
@@ -273,8 +269,6 @@ static void _on_status_query_finished(struct urb *urb)
     if (dev->urb_status_fail_count < RPUSBDISP_STATUS_QUERY_RETRY_COUNT) {
         _status_start_querying(dev);
     }
-
-    mutex_unlock(&dev->op_locker);
 }
 
 
