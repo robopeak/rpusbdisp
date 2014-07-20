@@ -121,7 +121,7 @@ Reboot the target system to using the new kernel. Copy the compiled usb display 
 
 Enter the above folder and execute the following command:
 
-    depmod -a
+    depmod 
 
 III. Load the kernel driver
 ---------------------------
