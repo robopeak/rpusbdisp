@@ -138,7 +138,7 @@ In this case the frame per seconds is set to 25.
 If you want to let the kernel load the driver automatically each time when the system starts, you can added the following line into the file /etc/modules:
     rp_usbdisplay
 
-(i.e. cat rp_usbdisplay >> /etc/modules)
+(i.e. echo rp_usbdisplay >> /etc/modules)
 
 
 IV. Verify the driver
