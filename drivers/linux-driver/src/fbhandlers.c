@@ -55,7 +55,7 @@ static struct fb_fix_screeninfo _vfb_fix /*__devinitdata*/ = {
 	.visual =	FB_VISUAL_TRUECOLOR,
 	.accel =	FB_ACCEL_NONE,
     .line_length = RP_DISP_DEFAULT_WIDTH * RP_DISP_DEFAULT_PIXEL_BITS/8,
-    .accel =        FB_ACCEL_NONE,
+
 };
 
 
