@@ -836,6 +836,7 @@ static void _on_release_disp_tickets_pool(struct rpusbdisp_dev * dev)
     struct rpusbdisp_disp_ticket * ticket;
     struct list_head *node;
     int tickets_count = dev->disp_tickets_pool.disp_urb_count;
+    DEFINE_WAIT(wait);
     
     dev_info(&dev->interface->dev, "waiting for all tickets to be finished...\n");
 
@@ -848,7 +849,11 @@ static void _on_release_disp_tickets_pool(struct rpusbdisp_dev * dev)
             --dev->disp_tickets_pool.availiable_count;
         } else {
             spin_unlock_irqrestore(&dev->disp_tickets_pool.oplock,irq_flags);
-            sleep_on_timeout(&dev->disp_tickets_pool.wait_queue, 2*HZ);
+            // sleep_on_timeout(&dev->disp_tickets_pool.wait_queue, 2*HZ);
+
+            prepare_to_wait(&dev->disp_tickets_pool.wait_queue, &wait, TASK_UNINTERRUPTIBLE);
+            schedule_timeout(2*HZ);
+            finish_wait(&dev->disp_tickets_pool.wait_queue, &wait);
             continue;
         }
         node = dev->disp_tickets_pool.list.next;

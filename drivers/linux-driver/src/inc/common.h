@@ -33,6 +33,7 @@
 #include <linux/mm.h>
 #include <linux/vmalloc.h>
 #include <linux/input.h>
+#include <linux/wait.h>
 
 #include "inc/types.h"
 #include "inc/drvconf.h"
