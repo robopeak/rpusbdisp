@@ -4,9 +4,8 @@
 
 
 # NOTE: do not alter the order of the folders, they are arranged based on the dependencies
-SUBDIRS:= infra \
-	  deps-wraps \
-	  rpusbdisp-drv
+SUBDIRS:= libusbx_wrap
+	
 
 
 .PHONY: all clean install listsubs
@@ -20,7 +19,3 @@ clean: listsubs
 
 install: listsubs
 
-distclean:
-	$(MAKE) clean
-	rm -r -f config.log config.status Makefile Makefile.conf
-	rm -r -f .obj .output

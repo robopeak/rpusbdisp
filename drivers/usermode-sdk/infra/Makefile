@@ -3,20 +3,22 @@
 #  By CSK (csk@live.com)
 #  
 
-PRJ_ROOT:=../..
-MOD_NAME:=libpng
+PRJ_ROOT:=..
+MOD_NAME:=infra
 
 include $(PRJ_ROOT)/scripts/def.mak
 
 
-CSRC:= $(shell find core -name "*.c")
-CXXSRC:= $(shell find core -name "*.cpp")
+CSRC:= $(shell find src -name "*.c")
+CXXCCSRC:= $(shell find src -name "*.cc")
+
+
 
 EXTRA_FLAGS:=-Wno-deprecated
 CDEFS+=
 DEP_AR+= 
 
-INCLUDES+= 
+INCLUDES+= -Iinclude
 
 all: $(STATIC_DEST)
 additional_clean:

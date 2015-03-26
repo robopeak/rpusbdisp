@@ -3,24 +3,27 @@
 #  By CSK (csk@live.com)
 #  
 
-PRJ_ROOT:=../..
-MOD_NAME:=libpng
+PRJ_ROOT:=..
+MOD_NAME:=rpusbdispdemo
 
 include $(PRJ_ROOT)/scripts/def.mak
 
 
-CSRC:= $(shell find core -name "*.c")
-CXXSRC:= $(shell find core -name "*.cpp")
+CSRC = $(shell find . -name "*.c")
+CXXCCSRC= $(shell find . -name "*.cc")
 
 EXTRA_FLAGS:=-Wno-deprecated
-CDEFS+=
-DEP_AR+= 
+CDEFS+= 
+DEP_AR+=
+
+DEP_LIBS+= $(RPUSBDISP_LIBS)
 
 INCLUDES+= 
 
-all: $(STATIC_DEST)
+
+all: $(EXEC_DEST)
 additional_clean:
-	rm -f $(STATIC_DEST)
+	rm -f $(EXEC_DEST)
 
 include $(PRJ_ROOT)/scripts/common.mak
 
