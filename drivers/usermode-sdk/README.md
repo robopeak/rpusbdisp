@@ -38,7 +38,9 @@ The simplest way is use zadig's install which is located [here](http://zadig.zke
 Just open the xcode project in workspaces/xcode with latest Xcode and build.
 
 ## Linux
-Just run make in this directory, to build the SDK. We use some C++ 11 features
+Please use the standard configure -> make method the build the project
+
+We use some C++ 11 features
 (mutex, thread, functional, memory, and etc.), so you may need GCC 4.8 to build
 this SDK.
 
