@@ -24,6 +24,10 @@ all: $(STATIC_DEST)
 additional_clean:
 	rm -f $(STATIC_DEST)
 
+
+install: 
+	tar cf - include | (cd $(PREFIX); tar xf -)
+
 include $(PRJ_ROOT)/scripts/common.mak
 
 

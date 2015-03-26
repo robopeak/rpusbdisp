@@ -25,6 +25,9 @@ all: $(EXEC_DEST)
 additional_clean:
 	rm -f $(EXEC_DEST)
 
+install: $(EXEC_DEST)
+	install -m 0755 $(EXEC_DEST) $(PREFIX)/bin
+
 include $(PRJ_ROOT)/scripts/common.mak
 
 

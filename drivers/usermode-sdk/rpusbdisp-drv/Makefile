@@ -26,6 +26,10 @@ all: $(DYNAMIC_DEST)
 additional_clean:
 	rm -f $(DYNAMIC_DEST)
 
+install: $(DYNAMIC_DEST)
+	install -m 0755 $(DYNAMIC_DEST) $(PREFIX)/bin
+	tar cf - include | (cd $(PREFIX); tar xf -)
+
 include $(PRJ_ROOT)/scripts/common.mak
 
 
