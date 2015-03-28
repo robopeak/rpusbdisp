@@ -6,7 +6,8 @@
 # NOTE: do not alter the order of the folders, they are arranged based on the dependencies
 SUBDIRS:= infra \
 	  deps-wraps \
-	  rpusbdisp-drv
+	  rpusbdisp-drv \
+	  demo
 
 
 .PHONY: all clean install listsubs
