@@ -932,7 +932,7 @@ static int _on_alloc_disp_tickets_pool(struct rpusbdisp_dev * dev)
     dev->disp_tickets_pool.disp_urb_count = actual_allocated;
     dev->disp_tickets_pool.availiable_count = actual_allocated;
     dev->disp_tickets_pool.packet_size_factor = packet_size_factor;
-    dev_info(&dev->interface->dev, "allocated %d urb tickets for transfering display data. %lu size each\n", actual_allocated, ticket_logic_size);
+    dev_info(&dev->interface->dev, "allocated %d urb tickets for transfering display data. %zu size each\n", actual_allocated, ticket_logic_size);
 
     return actual_allocated?0:-ENOMEM;
 };
