@@ -494,7 +494,7 @@ static int _bitblt_encoder_init(struct bitblt_encoding_context_t * ctx, struct r
     
     if ( required_tickets_count>RPUSBDISP_MAX_TRANSFER_TICKETS_COUNT)
     {
-        err("required_tickets_count (%d)>RPUSBDISP_MAX_TRANSFER_TICKETS_COUNT(%d)\n", required_tickets_count, RPUSBDISP_MAX_TRANSFER_TICKETS_COUNT);
+        err("required_tickets_count (%zu)>RPUSBDISP_MAX_TRANSFER_TICKETS_COUNT(%d)\n", required_tickets_count, RPUSBDISP_MAX_TRANSFER_TICKETS_COUNT);
        // BUG_ON(1);
         return 0;
     }
